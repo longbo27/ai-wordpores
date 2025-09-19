@@ -1,0 +1,221 @@
+feeds:
+  - name: One Mile at a Time
+    url: https://onemileatatime.com/feed/
+    category: Airline
+    score: 0.9
+  - name: Prince of Travel
+    url: https://princeoftravel.com/feed/
+    category: Travel
+    score: 0.8
+  - name: Doctor of Credit
+    url: https://www.doctorofcredit.com/feed/
+    category: Card
+    score: 0.8
+  - name: Frequent Miler
+    url: https://frequentmiler.com/feed/
+    category: Points
+    score: 0.75
+  - name: View from the Wing
+    url: https://viewfromthewing.com/feed/
+    category: Airline
+    score: 0.75
+  - name: The Points Guy
+    url: https://thepointsguy.com/feed/
+    category: Travel
+    score: 0.7
+  - name: AwardWallet Blog
+    url: https://awardwallet.com/blog/feed/
+    category: Points
+    score: 0.7
+  - name: Loyalty Lobby
+    url: https://loyaltylobby.com/feed/
+    category: Hotel
+    score: 0.7
+  - name: Head for Points
+    url: https://www.headforpoints.com/feed/
+    category: Points
+    score: 0.7
+  - name: Mainly Miles
+    url: https://mainlymiles.com/feed/
+    category: Airline
+    score: 0.65
+  - name: MilesTalk
+    url: https://milestalk.com/feed/
+    category: Points
+    score: 0.6
+  - name: Travel Update
+    url: https://travelupdate.com/feed/
+    category: Travel
+    score: 0.6
+  - name: Flyertalk - Miles and Points
+    url: https://www.flyertalk.com/articles/feed
+    category: Points
+    score: 0.6
+  - name: Travel Codex
+    url: https://travelcodex.com/feed/
+    category: Travel
+    score: 0.6
+  - name: Live and Let's Fly
+    url: https://liveandletsfly.com/feed/
+    category: Airline
+    score: 0.6
+  - name: Thrifty Traveler Premium
+    url: https://thriftytraveler.com/feed/
+    category: Travel
+    score: 0.6
+  - name: Easy Travel Points
+    url: https://easytravelpoints.com/feed/
+    category: Points
+    score: 0.55
+  - name: Straight To The Points
+    url: https://straighttothepoints.co/feed/
+    category: Points
+    score: 0.55
+  - name: Award Travel 101
+    url: https://www.awardtravel101.com/feed/
+    category: Points
+    score: 0.55
+  - name: God Save the Points
+    url: https://godsavethepoints.com/feed/
+    category: Travel
+    score: 0.55
+  - name: PointsNerd
+    url: https://pointsnerd.ca/feed/
+    category: Points
+    score: 0.5
+  - name: Frugal Flyer
+    url: https://frugalflyer.ca/feed/
+    category: Travel
+    score: 0.5
+  - name: Prince of Travel Deals
+    url: https://princeoftravel.com/deals/feed/
+    category: Points
+    score: 0.5
+  - name: Marriott Bonvoy News
+    url: https://news.marriott.com/feed/rss2
+    category: Hotel
+    score: 0.5
+  - name: Hyatt Newsroom
+    url: https://newsroom.hyatt.com/rss/news-releases
+    category: Hotel
+    score: 0.5
+  - name: Hilton Honors News
+    url: https://stories.hilton.com/rss
+    category: Hotel
+    score: 0.5
+  - name: IHG Newsroom
+    url: https://www.ihgplc.com/rss/news-releases
+    category: Hotel
+    score: 0.5
+  - name: Alaska Airlines Newsroom
+    url: https://news.alaskaair.com/feed/
+    category: Airline
+    score: 0.55
+  - name: Air Canada News
+    url: https://media.aircanada.com/rss/news-releases
+    category: Airline
+    score: 0.55
+  - name: United Airlines Newsroom
+    url: https://united.mediaroom.com/feed?feed=rss
+    category: Airline
+    score: 0.55
+  - name: American Airlines Newsroom
+    url: https://news.aa.com/rss/news-releases
+    category: Airline
+    score: 0.55
+  - name: Delta News Hub
+    url: https://news.delta.com/rss.xml
+    category: Airline
+    score: 0.55
+  - name: Singapore Airlines News
+    url: https://www.singaporeair.com/saar5/rss/rss.xml
+    category: Airline
+    score: 0.5
+  - name: Cathay Newsroom
+    url: https://news.cathaypacific.com/rss/news-releases
+    category: Airline
+    score: 0.5
+  - name: Qantas Newsroom
+    url: https://www.qantasnewsroom.com.au/feed/
+    category: Airline
+    score: 0.5
+  - name: EVA Air News
+    url: https://www.evaair.com/en-global/rss/feed.xml
+    category: Airline
+    score: 0.5
+  - name: Chase Travel News
+    url: https://stories.chase.com/feed
+    category: Card
+    score: 0.45
+  - name: Amex Offers
+    url: https://www.americanexpress.com/en-us/benefits/offers/rss-feed.html
+    category: Card
+    score: 0.45
+  - name: RBC Avion Offers
+    url: https://www.rbcroyalbank.com/avion-rewards/news/feed/
+    category: Card
+    score: 0.45
+  - name: BMO Rewards News
+    url: https://www.bmo.com/main/personal/credit-cards/news/rss
+    category: Card
+    score: 0.45
+  - name: HSBC Travel News
+    url: https://www.about.hsbc.ca/news-and-media/rss
+    category: Card
+    score: 0.45
+  - name: Air France Press
+    url: https://corporate.airfrance.com/en/rss
+    category: Airline
+    score: 0.45
+  - name: British Airways Media
+    url: https://mediacentre.britishairways.com/news/rss
+    category: Airline
+    score: 0.45
+  - name: Lufthansa Group News
+    url: https://www.lufthansagroup.com/rss/en/news.xml
+    category: Airline
+    score: 0.45
+  - name: ANA Press
+    url: https://www.ana.co.jp/group/en/pr/rss.xml
+    category: Airline
+    score: 0.45
+  - name: Qatar Airways News
+    url: https://www.qatarairways.com/resources/rss/news.xml
+    category: Airline
+    score: 0.45
+  - name: Etihad News
+    url: https://www.etihad.com/en-ca/about-us/newsroom/rss
+    category: Airline
+    score: 0.45
+  - name: Virgin Atlantic News
+    url: https://corporate.virginatlantic.com/gb/en/media-centre/press-releases/_jcr_content.rss
+    category: Airline
+    score: 0.45
+  - name: Turkish Airlines Press
+    url: https://news.turkishairlines.com/rss
+    category: Airline
+    score: 0.45
+  - name: Finnair News
+    url: https://company.finnair.com/en/media/rss
+    category: Airline
+    score: 0.45
+  - name: Iberia Newsroom
+    url: https://group.iberia.es/en/press-room/rss
+    category: Airline
+    score: 0.45
+  - name: Emirates Media Centre
+    url: https://www.emirates.com/media-centre/rss
+    category: Airline
+    score: 0.45
+  - name: KLM Newsroom
+    url: https://news.klm.com/feed/en/
+    category: Airline
+    score: 0.45
+  - name: Virgin Australia Newsroom
+    url: https://newsroom.virginaustralia.com/rss.xml
+    category: Airline
+    score: 0.45
+  - name: JetBlue Newsroom
+    url: https://www.jetblue.com/rss/news
+    category: Airline
+    score: 0.45
