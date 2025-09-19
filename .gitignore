@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.pyo
+.autobot/
+.autobot.sqlite3
+autobot.sqlite3
+output/
+autobot/assets/
+!autobot/assets/.gitkeep
+.taxonomy_cache/
+taxonomy_map.json
+*.log
+.poetry/
+.env
+
+# Poetry build
+build/
+dist/
+autobot/logs/
+!autobot/logs/.gitkeep
