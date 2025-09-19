@@ -1,0 +1,4 @@
+windows:
+  - "08:00"
+  - "16:00"
+max_posts_per_batch: 1
