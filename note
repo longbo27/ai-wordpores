@@ -1,0 +1,94 @@
+CODEX, BUILD & RUN THIS AS A SINGLE-CLICK AUTOPUBLISHER FOR longbo.cloud — NO QUESTIONS, JUST DO:
+
+Project:
+- Name: longbo_cloud_autobot (Python 3.11)
+- Package: autobot/
+- Manager: Poetry
+- CLI entry: longbo (Typer)
+- Scheduler: APScheduler (background)
+- HTTP: httpx + backoff
+- Parsing: feedparser, selectolax, lxml, beautifulsoup4
+- Storage: SQLite (SQLModel)
+- Similarity: simhash, rapidfuzz
+- Env: python-dotenv
+- Images: pillow, webptools (or pillow-webp), pydantic
+- LLM abstraction: pluggable (OpenAI-compatible + local), prompt templates in /prompts
+- WordPress: REST via /wp-json/wp/v2 + Application Password
+- Optional: Google Search Console API client (deferred if creds absent)
+- OS: cross-platform (macOS/Windows/Linux)
+
+Repo layout:
+  /autobot
+    __init__.py
+    config.py             # load .env + *.yml
+    db.py                 # SQLModel models: Task, Lead, Evidence, Article, ImageAsset, Publish, Metric
+    orchestrator.py       # start/stop/dry-run/panic; job state machine
+    discovery.py          # RSS/JSON feeds + web change-watch (ETag/Last-Modified + DOM block hash)
+    dedup.py              # URL normalization + SimHash/MinHash + title/outline similarity guards
+    research.py           # fact extraction → EvidencePack(JSON) with sources[], timestamps
+    planner.py            # outline/SEO brief (content type: flash/deep/evergreen)
+    writer.py             # LLM call -> long HTML article + titles/meta + FAQ + internal-link anchors; keeps [F1][F2] citations
+    imaging.py            # SDXL/local OR OpenAI Images; cover(1200x630) + inline charts; export WebP + ALT text
+    seo.py                # slug, meta, JSON-LD (Article/FAQPage/HowTo), internal-link suggestions, title A/B
+    publisher.py          # WP media upload, post publish/update, taxonomy sync, tag creation, hreflang
+    monitor.py            # GSC pull (if creds), CTR report CSVs; Telegram/Email notify (if configured)
+    rules.py              # compliance: disclaimers, expired-deal banners, brand-safety image rules
+    taxonomy.py           # first-run: pull categories/tags → taxonomy_map.json; cached ID mapping
+    sources.py            # seed white-list feeds + change-watch URLs for Airlines/Hotels/Banks/Points
+    templates/
+      cover_prompt.txt
+      article_prompt.txt
+      faq_prompt.txt
+      disclaimer.html
+      expired_banner.html
+    prompts/
+      writer_zh.txt
+      writer_en.txt
+      rewriter_variants.txt
+    assets/               # generated images (gitignored)
+    logs/                 # rotating logs
+  /config
+    sources.yml           # feeds + watch URLs + polling cadence
+    schedule.yml          # run windows + max posts per batch (e.g., 08:00, 16:00)
+    thresholds.yml        # scores, simhash thresholds, publish floor
+  .env.example            # WP_BASE_URL=https://longbo.cloud ; WP_USER=... ; WP_APP_PASS=... ; OPENAI_API_KEY=... ; IMAGE_ENGINE=openai|sdxl
+  README.md               # how to run (poetry install; longbo start)
+  pyproject.toml
+  Makefile                # make run / lint / fmt
+  LICENSE
+
+Core behaviors:
+- FULLY AUTONOMOUS: “longbo start” launches scheduler; batches at 08:00 & 16:00; or run immediately with “--now”.
+- DISCOVERY: pull RSS/JSON feeds + monitor change on official pages (hash key DOM blocks); score by freshness, authority, site-match, user value.
+- DEDUP: reject if URL seen; reject if SimHash(article-facts) > 0.85 vs historical; else mark as UPDATE if related post exists.
+- RESEARCH: extract dates/regions/rates/thresholds from sources; require ≥1 official source per key fact; build EvidencePack with [Fi] ids.
+- PLANNER: choose content type (flash/deep/evergreen), outline H2/H3, generate image ideas.
+- WRITER: produce 1,500–2,500 words (zh or en, configurable), include “速览要点/玩法/算账/FAQ”, embed [Fi] anchors linking to “信息框引用”; produce 5 titles (≤60 chars), 3 meta desc (≤155), and 3–5 internal-link anchors.
+- ORIGINALITY: after draft, run rewriter_variants to lower overlap while preserving [Fi] facts; enforce style guardrails; no source copy.
+- IMAGING: generate OG cover + one info-graphic; abstract icons, no trademarked card faces; export WebP (<300KB cover, <200KB inline), write ALT.
+- SEO: JSON-LD Article (+FAQPage/HowTo when applicable), slugify, lazily load images, internal links (3–6) chosen via WP search; Title/Meta A/B (store both; publish A, enqueue B for 14–30d swap).
+- PUBLISH: upload media first, then post with category/tag mapping, featured_media, excerpt; create missing tags; bilingual mode optionally posts two interlinked versions with hreflang.
+- LIFECYCLE: on end_date, auto mark title as “（已结束）” and insert expired_banner; quarterly refresh for evergreen.
+- MONITOR: push summary to console + log; if TELEGRAM_BOT set, notify; if GSC set, fetch CTR/Clicks and write CSV to /reports.
+- RESILIENCE: retries with jitter; network errors → exponential backoff; hard failures -> move task to cooldown; all actions logged.
+
+Defaults to match longbo.cloud:
+- Top-level categories: Airline, Card, Hotel, Points, Travel, Status Match (sync actual IDs at first run).
+- Tags auto-created from brands/regions (e.g., Aeroplan, United, Marriott, IHG, Hyatt; Canada/USA).
+- Site strapline for images: “Longbo Cloud — Fly, Card, Point”.
+
+Deliverables:
+- Generate full codebase + README.md with quickstart:
+  poetry install
+  cp .env.example .env
+  longbo sync-taxonomy
+  longbo start --now
+- Provide example config: config/sources.yml with 30–50 seed feeds & watch URLs (airlines, hotel chains, major banks/card issuers, loyalty programs in CA/US).
+- Provide sample run: dry-run that selects 1 lead → writes draft HTML + images to /assets and saves to DB without publishing.
+- Provide Windows Task Scheduler & macOS launchd snippets in README.
+
+NOW DO IT:
+1) Scaffold the project with Poetry.
+2) Implement all modules & CLI.
+3) Generate default configs and taxonomy sync.
+4) Ensure “longbo start --now” runs end-to-end and publishes a single safe demo post to draft if WP creds missing; if creds present, publish live to longbo.cloud with correct category/tag and featured image.
